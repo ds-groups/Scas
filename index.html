@@ -5,18 +5,13 @@
   <title>AI Welcome Conference</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
       font-family: 'Segoe UI', sans-serif;
+      height: 100%;
     }
 
-    /* Slide 1 with background image */
     #slide1 {
       background: url('background.jpg') no-repeat center center fixed;
       background-size: cover;
@@ -54,22 +49,27 @@
       background-color: #005fa3;
     }
 
-    /* Slide 2 - full-screen video */
     #slide2 {
       display: none;
-      background-color: #000;
-      height: 100vh;
-      width: 100%;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      background-color: #ffffff;
+      min-height: 100vh;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    #slide2 h2 {
+      font-size: 26px;
+      margin-bottom: 20px;
+      color: #222;
     }
 
     #slide2 video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border: none;
+      width: 640px;
+      max-width: 95%;
+      height: auto;
+      border: 3px solid #0077cc;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
     }
   </style>
 </head>
@@ -84,7 +84,8 @@
 
   <!-- Slide 2 -->
   <div id="slide2">
-    <video controls autoplay>
+    <h2>Srinivasan College of Arts and Science</h2>
+    <video id="mainVideo" controls>
       <source src="welcome-video.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
@@ -94,7 +95,6 @@
     function playAudioAndShow() {
       const voice = document.getElementById('voice');
       voice.play();
-
       voice.onended = () => {
         document.getElementById("proceedBtn").style.display = "inline-block";
       };
@@ -102,8 +102,9 @@
 
     function goToSlide2() {
       document.getElementById("slide1").style.display = "none";
-      document.getElementById("slide2").style.display = "flex";
+      document.getElementById("slide2").style.display = "block";
       document.getElementById("voice").remove();
+      document.getElementById("mainVideo").play();
     }
   </script>
 
